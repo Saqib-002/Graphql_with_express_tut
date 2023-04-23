@@ -23,3 +23,17 @@
   }
 }
 # for mutation
+
+mutation{
+  addNewProduct(id:"orangejacket",description:"Orange Jacket",price:70.55){
+    id
+    reviews{
+      rating
+      comment
+    }
+  }
+  addNewProductReview(id:"redshoe",rating:5,comment:"Great codind shoes!"){
+    rating
+    comment
+  }
+} 

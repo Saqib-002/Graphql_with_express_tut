@@ -2,12 +2,14 @@ const products=[
     {
         id:"redshoe",
         description:"Red Show",
-        price:42.1
+        price:42.1,
+        reviews:[]
     },
     {
         id:"bluejean",
         description:"Blue Jeans",
-        price:55.55
+        price:55.55,
+        reviews:[]
     }
 ]
 function getAllProducts(){
@@ -25,8 +27,20 @@ function getProductByID(id){
     })
 }
 
+function addNewProduct(id,description,price){
+    const newProduct={
+        id,
+        description,
+        price,
+        reviews:[]
+    }
+    products.push(newProduct);
+    return newProduct;
+}
+
 module.exports={
     getAllProducts,
     getProductsByPrice,
-    getProductByID
+    getProductByID,
+    addNewProduct
 }

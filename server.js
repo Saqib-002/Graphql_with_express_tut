@@ -5,10 +5,22 @@ const {graphqlHTTP}=require('express-graphql')
 const {makeExecutableSchema}=require('@graphql-tools/schema')
 
 const typesArray = loadFilesSync('**/*', {
-    extensions: ['graphql'],
+    extensions: ['graphql']
   });
 const schema=makeExecutableSchema({
-    typeDefs:typesArray
+    typeDefs:typesArray,
+    resolvers:{
+        Query:{
+            products:async(parent)=>{
+                console.log("Getting the products...");
+                return await Promise.resolve(parent.products)
+            },
+            orders:(parent)=>{
+                console.log("Getting the orders...");
+                return parent.orders
+            }
+        }
+    }
 })
 
 const root={
